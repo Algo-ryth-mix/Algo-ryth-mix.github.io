@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,400,400i,700,700i|IBM+Plex+Serif:400,400i&display=swap');
+@import url('colors.less');
+@import url('mobile.less') screen and (max-width:768px);
+@import url('desktop.less') screen and (min-width:767px);
+@import url('code.css');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* a nice font for all the things */
+a,h1,h2,h3 {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* some privacy for the Headers */
+h1,h2,h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+/* BIG TEXT for h1 */
+h1 {
+  text-transform: uppercase;
+}
+
+/* nicer color + better style for anchors */
+a {
+  text-decoration: none;
+  color: @accent_light;
+  font-weight: bold;
+  &:hover
+  {
+    text-decoration: underline;
+  }
+}
+
+p {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  line-height: 22pt;
+  font-size: 12pt;
+  color: @main_light;
+}
+
+/* links in the navigation should be black */
+main nav a {
+  color: @main_dark;
+  font-size: 20px;
+}
+/* except for when they have been clicked */
+main nav a.active{
+  background-color:@accent_light;
+  color: #fff;
+}
+
+/* footer gets some seriously small text */
+footer p {
+  font-size: 11.5px;
+  padding: 20px;
+  line-height: normal;
+}
+
+body
+{
+  background-color: @main_dark;
+}
+
+article .tldr+p {
+  float:left;
+  width: 50vw !important;
+}
+
+.personal-image-container
+{
+  margin: 0px 200px;
+  float: right;
+  display: inline;
+  background-image: url("../media/placeholder.png");
+  background-position: center;
+  background-size: cover;
+  width: 160px;
+  height: 200px;
+  border-radius: 3px;
+  border: 2px solid @accent_light;
+}

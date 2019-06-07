@@ -1,3 +1,117 @@
-<h1>
-  Currently under construction
-</h1>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Algo-ryth-mix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+    <script type="text/javascript" src="js/google-code-prettify/prettify.js"></script>
+    <link rel="stylesheet" href="style/main.css">
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#4d394b">
+  </head>
+  <body onload="">
+    <main>
+      <div class="image-container tooltip">
+        <span class="tooltiptext">Why thefknmoon you wonder? Well it all started with a presentation in physics</span>
+      </div>
+      <div class="hider"></div>
+      <nav class= "navigation">
+        <div><a href="#home" class="active"> Home </a></div>
+        <div><a href="#tldr"> At a Glance </a></div>
+        <div><a href="#repositories"> Repositories & Previous Work </a></div>
+        <div><a href="#contact"> Contact </a></div>
+      </nav>
+      <article>
+        <h2 style="background-color:rgba(188, 0, 25,200); padding:10px;border-radius:5px;border: solid 2px white;"> This Website is still under construction!<h2>
+        <h1 id="home"> Where am I ? </h1>
+          <p>Hi! You landed on my Portfolio Website. My name is Raphael and if that name already intrigues you, you can find out more about myself by just reading on! </p>
+
+
+        <h1 id="tldr"> At a Glance </h1>
+        <img class="personal-image-container"/>
+
+          <p>
+            My full Name is Raphael Sebastian Baier. I'm from Austria, which naturally means I speak German and as you can see English. I'm currently studying <i> Creative Media and Game Technologies </i>
+            <a href="https://www.saxion.edu/programmes/bachelor/creative-media-and-game-technologies"> at the Saxion Univesity of Applied Sciences </a> in the Netherlands.
+            Before that I was a student at the <a href="www.werkschulheim.at">Werkschulheim Felbertal</a> where I got my Degree in Mechatronics <a href = "https://www.wko.at/service/w/bildung-lehre/Mechatroniker-fuer-Elektromaschinenbau-und-Automatisierung.html">(more about this here)</a> and received the AHS Matura (educ. Higher School Certificate).
+          </p>
+          <p>You can contact me per email at:<a href="mailto:public.baier.raphael@gmail.com"> public.baier.raphael@gmail.com</a></p>
+        <h1 id="repositories"> Public Repositories and other Work </h1>
+          <h3> Raphael's (@algo-ryth-mix) Public Repos </h3>
+            <p> - <a href="https://gitlab.com/Algo-ryth-mix"> on Gitlab </a></p>
+            <p> - <a href="https://github.com/Algo-ryth-mix/"> on Github </a></p>
+          <h3>Fully constexpr ready angle class</h3>
+          <pre class="prettyprint lang-cpp loadcpp" id="c++/main.cpp">
+
+          </pre>
+      </article>
+    </main>
+    <footer>
+      <p> Website by Raphael Baier &copy;
+    </footer>
+  </body>
+  <script>
+
+
+
+    function loadFile(filename)
+    {
+      return fetch(filename).then(function(result){
+        return {
+          source: filename,
+          contents: result.text()
+        }
+      })
+    }
+
+    function PrettyPrintCppFile(str)
+    {
+      str = str.replace(/&/g, "&amp;");
+      str = str.replace(/>/g, "&gt;");
+      str = str.replace(/</g, "&lt;");
+      str = str.replace(/"/g, "&quot;");
+      str = str.replace(/'/g, "&#039;");
+      return  PR.prettyPrintOne(str,"c++");
+    }
+
+    var loadfiles = document.getElementsByClassName('loadcpp')
+
+    for (var j = 0; j < loadfiles.length; j++) {
+      loadFile(loadfiles[j].id).then(
+        function(response){
+          response.contents.then(
+             source => document.getElementById(response.source).innerHTML = PrettyPrintCppFile(source)
+           )
+        }
+      )
+    }
+
+
+    //get the navigation
+    var nav = document.getElementsByClassName('navigation')[0]
+
+    //iterate over all children of the Navigation
+    for (var i = 0; i < nav.childNodes.length; i++) {
+
+      //add a click handler to them
+      nav.childNodes[i].addEventListener("click", function() {
+
+        //inside the click handler iterate over all elements of the nav
+        for (var j = 0; j < nav.childNodes.length; j++) {
+
+          //check if the node is a div
+          if(nav.childNodes[j].tagName == 'DIV')
+
+            //remove the active class from it
+            nav.childNodes[j].childNodes[0].classList.remove("active");
+        }
+
+        //add the active class to this node only
+        this.childNodes[0].classList.add("active");
+      });
+    }
+
+
+  </script>
+
+</html>

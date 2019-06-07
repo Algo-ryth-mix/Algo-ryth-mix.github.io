@@ -1,0 +1,153 @@
+@import url('colors.less');
+
+/* ###############
+ * THEFKNMOON LOGO
+ */
+main .image-container {
+  position: fixed; /* make sure the logo always stays on top*/
+  right: calc(10vw - 60px); /* logo on the right side of the screen */
+  top: 5vh; /*logo in the same line as the menu elements, excluding their padding */
+
+  height: 60px;
+  width: 150px;
+
+  /* the funny logo */
+  background-image: url("../media/logo.jpg");
+  background-size: cover;
+  z-index: 100; /*make sure that the image stays on top*/
+
+}
+
+/* ##########
+ * NAVIGATION
+ */
+main nav{
+  /* make sure the navigation always stays on top*/
+  position: fixed;
+  left: 10vw; /* some space to the left*/
+  top: 5vh; /* and some space from the top */
+  height: 65px;
+  z-index: 100;/*make sure that the image stays on top*/
+
+  div {
+    display: inline-block;
+    height: 50px;
+  }
+
+  a {
+    display: inline-block;
+    padding: 15px;
+    border-radius: 2px;
+  }
+
+}
+
+
+main article {
+  position: relative;
+  margin-top: calc(5vh + 65px + 20px);
+  left: 10vw;
+  width:80vw;
+  margin-bottom: 100px;
+
+  z-index: 0;
+}
+
+/*easy fix to make sure that the navigations isn't disturbed by a bunch of text in the background */
+.hider {
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ height: calc(5vh + 65px);
+ background: #fff;
+ z-index: 99;/* just below the navigation */
+ border-bottom: 4px solid  @accent_dark; /* narly little bar at the bottom */
+
+}
+
+
+/* ##################
+ * FOOTER POSITIONING
+ */
+body {
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  background-color: @main_dark;
+  color: #fff;
+
+  height: 70px;
+  flex-shrink: 0;
+}
+
+/* #########################
+ * SCROLL TO RIGHT POSITION
+ */
+h1::before{
+  display: block;
+  content: " ";
+  margin-top: calc( - (5vh + 1px) );
+  height: calc(  (5vh + 1px) );
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+
+/* #######
+ * TOOLTIP
+ */
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 6px;
+
+  opacity: 0;
+  transition: opacity 1s;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.tooltip .tooltiptext {
+  top: -5px;
+  right: 130%;
+}
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 33%;
+  left: 100%; /* To the right of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent @main_dark;
+}
