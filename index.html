@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <script type="text/javascript" src="js/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="js/load_code.js"></script>
     <link rel="stylesheet" href="style/main.css">
     <meta charset="utf-8">
     <meta name="theme-color" content="#4d394b">
@@ -32,7 +33,7 @@
 
           <p>
             My full Name is Raphael Sebastian Baier. I'm from Austria, which naturally means I speak German and as you can see English. I'm currently studying <i> Creative Media and Game Technologies </i>
-            <a href="https://www.saxion.edu/programmes/bachelor/creative-media-and-game-technologies"> at the Saxion Univesity of Applied Sciences </a> in the Netherlands.
+            <a href="https://www.saxion.edu/programmes/bachelor/creative-media-and-game-technologies"> at the Saxion Univesity of Applied Sciences</a> in the Netherlands.
             Before that I was a student at the <a href="https://www.werkschulheim.at">Werkschulheim Felbertal</a> where I got my Degree in Mechatronics <a href = "https://www.wko.at/service/w/bildung-lehre/Mechatroniker-fuer-Elektromaschinenbau-und-Automatisierung.html">(more about this here)</a> and received the AHS Matura (educ. Higher School Certificate).
           </p>
           <p>You can contact me per email at: <a href="mailto:public.baier.raphael@gmail.com">public.baier.raphael@gmail.com</a></p>
@@ -53,39 +54,7 @@
   </body>
   <script>
 
-
-
-    function loadFile(filename)
-    {
-      return fetch(filename).then(function(result){
-        return {
-          source: filename,
-          contents: result.text()
-        }
-      })
-    }
-
-    function PrettyPrintCppFile(str)
-    {
-      str = str.replace(/&/g, "&amp;");
-      str = str.replace(/>/g, "&gt;");
-      str = str.replace(/</g, "&lt;");
-      str = str.replace(/"/g, "&quot;");
-      str = str.replace(/'/g, "&#039;");
-      return  PR.prettyPrintOne(str,"c++");
-    }
-
-    var loadfiles = document.getElementsByClassName('loadcpp')
-
-    for (var j = 0; j < loadfiles.length; j++) {
-      loadFile(loadfiles[j].id).then(
-        function(response){
-          response.contents.then(
-             source => document.getElementById(response.source).innerHTML = PrettyPrintCppFile(source)
-           )
-        }
-      )
-    }
+  loadcode();
 
 
     //get the navigation

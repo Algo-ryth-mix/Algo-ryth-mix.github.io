@@ -11,6 +11,9 @@ main nav a {
   text-decoration: none;
   padding: 15px 8vw;
 }
+main nav div a {
+  color: @main_light;
+}
 
 /* slightly adjust the position of the article */
 main article {
@@ -32,3 +35,16 @@ footer {
   padding: 200px;
 }
 .tooltip, .hider { visibility: hidden; display: none; }
+
+.personal-image-container
+{
+  margin: 10px auto;
+  display: block;
+  background-image: url("../media/placeholder.png");
+  background-position: center;
+  background-size: cover;
+  width: 160px;
+  height: 200px;
+  border-radius: 3px;
+  border: 2px solid @accent_light;
+}
