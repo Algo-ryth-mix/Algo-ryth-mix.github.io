@@ -138,7 +138,6 @@ li.L9 {
   }
 }
 
-
 input[id^="spoiler"]{
  display: none;
 }
@@ -147,13 +146,12 @@ input[id^="spoiler"] + label {
   margin: 0 auto;
   padding: 5px 20px;
   background: #6ead3a;
-  color: #fff;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
   transition: all .6s;
   border-radius: 2px;
-  
+
 }
 input[id^="spoiler"]:checked + label {
   background-color: #497723;
