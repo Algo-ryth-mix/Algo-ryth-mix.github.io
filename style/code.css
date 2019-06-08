@@ -117,3 +117,54 @@ li.L9 {
     color: #36a166;
   }
 }
+@media screen and (max-width:768px){
+  .prettyprint{
+    font-size: 10px;
+    width: calc(100% - 2 * 20px );
+    overflow-x: scroll;
+    background-color: rgba(10,10,10,10);
+  }
+}
+@media screen and (min-width:767px){
+  .prettyprint{
+      margin-top: 10px;
+      font-size: 12px;
+      background-color: rgba(10,10,10,10);
+      padding: 20px;
+      border: 2px solid #6ead3a;
+      border-radius: 4px;
+
+      width: 50vw;
+  }
+}
+
+
+input[id^="spoiler"]{
+ display: none;
+}
+input[id^="spoiler"] + label {
+  display: inline;
+  margin: 0 auto;
+  padding: 5px 20px;
+  background: #6ead3a;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all .6s;
+  border-radius: 2px;
+  
+}
+input[id^="spoiler"]:checked + label {
+  background-color: #497723;
+}
+input[id^="spoiler"] ~ .spoiler {
+  height: 0;
+  opacity: 0;
+  transition: all .6s;
+}
+input[id^="spoiler"]:checked + label + .spoiler{
+  height: auto;
+  opacity: 1;
+  padding: 10px;
+}
