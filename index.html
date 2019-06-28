@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="style/main.css">
     <meta charset="utf-8">
     <meta name="theme-color" content="#4d394b">
+    <style>
+      p {
+        text-align: justify;
+      }
+    </style>
   </head>
   <body onload="">
     <main>
@@ -17,13 +22,13 @@
       </div>
       <div class="hider"></div>
       <nav class= "navigation">
-        <div><a href="#home" class="active"> Home </a></div>
+        <div><a href="#" class="active"> Home </a></div>
         <div><a href="#tldr"> At a Glance </a></div>
         <div><a href="#repositories"> Repositories & Previous Work </a></div>
-        <div><a href="#contact"> Contact </a></div>
+        <div><a href="#detail"> In more Detail </a></div>
       </nav>
       <article>
-        <h2 style="background-color:rgba(188, 0, 25,200); padding:10px;border-radius:5px;border: solid 2px white;"> This Website is still under construction!<h2>
+      <!--  <h2 style="background-color:rgba(188, 0, 25,200); padding:10px;border-radius:5px;border: solid 2px white;"> This Website is still under construction!<h2> -->
         <h1 id="home"> Where am I ? </h1>
           <p>Hi! You landed on my Portfolio Website. My name is Raphael and if that name already intrigues you, you can find out more about myself by just reading on! </p>
 
@@ -38,16 +43,77 @@
           </p>
           <p>You can contact me per email at: <a href="mailto:public.baier.raphael@gmail.com">public.baier.raphael@gmail.com</a></p>
           <p> or via <a href="https://www.linkedin.com/in/raphael-baier-26800a188/"> Linkedin </a> </p>
+
           <h1 id="repositories"> Public Repositories and other Work </h1>
           <h3> Raphael's (@algo-ryth-mix) Public Repos </h3>
             <p> - <a href="https://gitlab.com/Algo-ryth-mix"> on Gitlab </a></p>
             <p> - <a href="https://github.com/Algo-ryth-mix/"> on Github </a></p>
-
           <h3> Code Examples <h3>
           <input type="checkbox"  id="spoiler" />
-          <label for="spoiler" >Fully constexpr angle class</label>
+          <label for="spoiler" >Bit of Magic</label>
+          <pre class="prettyprint lang-cpp loadcpp spoiler" id="c++/bit_of_magic.cpp">
+          </pre>
+          <input type="checkbox"  id="spoiler2" />
+          <label for="spoiler2" >Fully constexpr angle class</label>
           <pre class="prettyprint lang-cpp loadcpp spoiler" id="c++/main.cpp">
           </pre>
+          <input type="checkbox"  id="spoiler3" />
+          <label for="spoiler3" >Libpixlengine's Scheduler</label>
+          <pre class="prettyprint lang-cpp loadcpp spoiler" id="c++/scheduler.cpp">
+          </pre>
+          <input type="checkbox"  id="spoiler4" />
+          <label for="spoiler4" > Sorted Font-Renderer</label>
+          <pre class="prettyprint lang-cpp loadcpp spoiler" id="c++/font_render.cpp">
+          </pre>
+
+          <h1 id="detail"> In more Detail </h1>
+            <p>
+              It all started at the 17th of April 1999 ... or so I'm told as I don't have perfect recall of that moment.
+              The first few years where mostly boring.
+            </p>
+            <h3>But suddenly! primary school.</h3>
+            <p>
+              It turns out I was the quiet kid from day 0, dreaming of becoming an Inventor or alternatively a Train-Driver.<br>
+              But sadly my school was not that suitable for the quiet kid (as in not quiet enough).
+              So after a year or so my Parents decided to get me into another Primary School in Leopoldskron Moos, a Region by Salzburg in Austria.
+              The Time there was mostly a blast, except for the occasional Test in German, which I not only hated because of my terrible Handwriting, but also because German is a Language made by an alien lunatic.
+              After some fiddeling with the pencile and a bit of kick-start in the german department I got all of this figured out however (or mostly at least).
+              I had a few, but good friends and although we were a weird bunch, we didn't get into too much trouble.
+            </p>
+            <h3> Tears and Sadness</h3>
+            <p>
+              You remember from before, when I told you that I wanted to become an inventor?
+              It turns out the real live equivalent of that is a mechatronics engineer.
+              This Idea of becoming a professsional in the mechatronics field was set in my head like nothing else. (and I can be stuborn)
+              The only problem was, the only school (at that time at least) that does mechatronics at the level I was interested in was the Werkschulheim Felbertal. A private boarding-school, ontop of a mountain, in the middle of nowhere. To add insult to injury it also takes 9 instead of the usual 8 years. As you can imagine my parents weren't to keen on that idea. They had a masterplan however; The admission at the WSH works as such: you come around for a week do a bunch of tests and if you succeed you get stuffed into a class with 40 other class-mates of which after the 1st year only 20 or so remain. Out of the 120 or so applicants for each year a mear 15 usually graduate after 9 years. Well well well... not only did I get accepted our class also graduated with 21 people, a few wrong assumptions were made here.
+              My first 5 years were mostly calm. We had strong winters and hot summers. I also discovered that I can't ski for nothing. I picked up my first book on programming with 12: "Python for beginners". And a year after that I wanted to work in C++ for whatever reason, that was a daunting task to say the least.
+            </p>
+            <p>
+              The time has come to choose my profession. the WSH had 3 Options: Engineering, Mechatronics and Carpenting. I was of course predetermined, but I also discovered that im an absolute idiot when it comes to working with wood. so the decision was extra easy.
+              Mechatronics it was. Soldering is fun. Calculating Resistors not so much, Designing in CAD doing some Machining is neat, but programming... that was where I excelled above all (except for one. Instead of making him my arch-enemy however, he became one of my best friends!).
+              I discovered that making a hunk of silicone whatever I told it to was indeed such a thrilling experience to me that I immediately specialized in that.
+            </p>
+            <h3> Nine Years have passed </h3>
+              <p>
+                 I graduated with an AHS Matura and as Geselle in Mechatronics (soon to be Meister!),<br>
+                 Wrote a halfway decent paper on the Encryption of the Enigma Machine,<br>
+                 Crashed my first car,<br>
+                 Moved a total of 3 Times with my parents already (including to my school),<br>
+                 made lots of friends and<br>
+                 lost a few.<br>
+               </p>
+           <h3> Now what ? </h3>
+              <p>
+                After a bit of contemplation I started my study at Saxion (moving again, twice!)<br>
+                My Parents are still not impressed that I keep disappearing.<br>
+                The first year is now nearly over... and im working on stuff that I don't really see the use of (Portfolios and whatnot) and stuff that I quite enjoy.
+              </p>
+              <p>
+                I hope this little excerpt from my life gives you a bit on insight into my person. if you figured out what type of Person I am... would you so kindly send me an email, because I am still trying to figure that out on my own.
+              </p>
+
+
+
 
       </article>
     </main>

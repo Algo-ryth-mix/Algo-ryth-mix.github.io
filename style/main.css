@@ -222,8 +222,8 @@
   h1::before {
     display: block;
     content: " ";
-    margin-top: calc(- 5vh + 1px);
-    height: calc(5vh + 1px);
+    margin-top: calc( -15vh + 20px);
+    height: calc(15vh + 10px);
     visibility: hidden;
     pointer-events: none;
   }
