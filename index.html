@@ -51,8 +51,8 @@
           <h3> Lua Integration on LibPixlEngine </h3>
           <p>
             Working with LibPixlEngine, although I naturally get a bit blind for my pet-project, can get quite tedious. depending on how much code you have changed,<br>
-            how much of the library you are using and how powerful your rig is, compile times can easily surpass mutliple minutes.<br> Which, for a language like c++ where nullptrs are a thing, can get old really quick.
-            The approach most Engines choose is therfore to include some kind of scripting environment.<br> Now in LibPixlEngine this is inherently difficult because of multiple things:<br>
+            how much of the library you are using and how powerful your rig is, compile times can easily surpass multiple minutes.<br> Which, for a language like c++ where nullptrs are a thing, can get old really quick.
+            The approach most Engines choose is therefore to include some kind of scripting environment.<br> Now in LibPixlEngine this is inherently difficult because of multiple things:<br>
             - LPE is highly multithreaded. a script-environment that cannot handle that is clearly out of place.<br>
             - LPE has the concept of task priorities, a script can't simply have an onEarlyUpdate() and onLateUpdate() method<br>
             - LPE has variable frame and tick-rates, it is of upmost importance that the Script receives a DeltaTime in some way or another<br>
@@ -62,7 +62,7 @@
             LUA-JIT!!<br>
             You might think that isn't particularly different, and you would be right, but luajit offers much better performance on raw scripts as it, as the name suggests,<br>
             compiles the lua just in time. This is great as it allows me to write modules directly in lua without that big of a performance hit. Lua has a few other advantages as well<br>
-            namely: It is well-established, it runs in a very minimal vm, that does not care from which thread it is beeing accessed and it can be instatiated multiple times.
+            namely: It is well-established, it runs in a very minimal VM, that does not care from which thread it is being accessed and it can be instatiated multiple times.
             Here is a script that shows (almost) all of the features that the Engine currently supports via the Engine.
           <pre class="prettyprint lang-lua loadcpp " id="c++/lua_interp.lua">
           </pre>
@@ -74,16 +74,15 @@
 
           <h3> Vectorized Libpixlengine Math Module </h3>
           <p> Recently I have been working on an improvement for the Math Module of LibPixlEngine, I decided to dwell into the scary world of SSE and AVX <br>
-            once more and finally tried to improve matrix performance. For this purpose I decided to also finally improve the unit-test framework of <br>
-             lpe.unit-tests, I think I came up widh
-            an implementation that I like, that is still somewhat understandable. Take a look for yourself!</p>
+            once more and finally tried to improve matrix performance. For this purpose, I decided to also finally improve the unit-test framework of <br>
+             lpe.unit-tests, I think I came up with an implementation that I like, that is still somewhat understandable. Take a look for yourself!</p>
           <pre class="prettyprint lang-cpp loadcpp " id="c++/fast_mat.cpp">
           </pre>
           </br>
           <p> Now although this doesn't look like it improved the time complexity much, it is on average 10x faster, on a testbed with 100 4x4 matrix multiplications,<br>
              the unoptimized approach takes on average ~1ms whilst the optimized one takes roughly ~0.1ms</p>
-          <p> Now keep in mind that this takes advantage of some extensions that not all processors support, therfore we have to provide a fallback. <br>
-             luckily pixl.isa.InstructionSet, already has the functionality to test for SSE:</p>
+          <p> Now keep in mind that this takes advantage of some extensions that not all processors support, therefore we have to provide a fallback. <br>
+             luckily pixl.isa.InstructionSet already has the functionality to test for SSE:</p>
           <pre class="prettyprint lang-cpp loadcpp " id="c++/test_isa.cpp">
           </pre>
           <h3> Code Examples <h3>
