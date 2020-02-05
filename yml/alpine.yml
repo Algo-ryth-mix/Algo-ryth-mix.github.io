@@ -1,0 +1,10 @@
+image: alpine
+
+generate_make:
+  script:
+    - wget -qO- https://github.com/premake/premake-core/releases/download/v5.0.0-alpha14/premake-5.0.0-alpha14-linux.tar.gz | tar xvz premake5
+    - chmod +x premake5
+    - cp premake5 /bin/
+    - which premake
+    - premake5 gmake
+    - make 

@@ -18,6 +18,16 @@ function PrettyPrintCppFile(str)
   return  PR.prettyPrintOne(str,"c++");
 }
 
+function PrettyPrintYMLFile(str)
+{
+  str = str.replace(/&/g, "&amp;");
+  str = str.replace(/>/g, "&gt;");
+  str = str.replace(/</g, "&lt;");
+  str = str.replace(/"/g, "&quot;");
+  str = str.replace(/'/g, "&#039;");
+  return  PR.prettyPrintOne(str,"yml");
+}
+
 function loadcode() {
   var files = document.getElementsByClassName('loadcpp')
   for (var j = 0; j < files.length; j++) {
@@ -25,6 +35,17 @@ function loadcode() {
       function(response){
         response.contents.then(
            source => document.getElementById(response.source).innerHTML = PrettyPrintCppFile(source)
+         )
+      }
+    )
+  }
+
+  var ymlfiles = document.getElementsByClassName('loadyml')
+  for (var j = 0; j < ymlfiles.length; j++) {
+    loadFile(ymlfiles[j].id).then(
+      function(response){
+        response.contents.then(
+           source => document.getElementById(response.source).innerHTML = PrettyPrintYMLFile(source)
          )
       }
     )

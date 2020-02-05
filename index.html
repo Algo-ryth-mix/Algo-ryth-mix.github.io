@@ -49,6 +49,76 @@
             <p> - <a href="https://gitlab.com/Algo-ryth-mix"> on Gitlab </a></p>
             <p> - <a href="https://github.com/Algo-ryth-mix/"> on Github </a></p>
 
+          <h3> LPEs new documentation system (soon &trade;) </h3>
+          <p>
+            Recently I discovered sphinx. No not that ancient cat in egypt, but the documentation build system python uses.<br>
+            it is quite a hassle compared to doxygen, but my do the documentation pages it generates look ever beautiful.<br>
+
+            So naturally I wanted it!<br><br>
+            But what gives? to use it I would have to write all my documents in .rst again or migrate libpixlengine to python, neither of which where easy or desriable<br>
+            Breathe and Exhale to the rescue!<br><br>
+
+            Turns out all those years of writing doxygen style comments are finally going to pay off. Breathe can super-charge your .rst files with doxygen-commands<br>
+            And even better exhale can generate those .rst files for you automagically! all you have to do is a bit of configuring... ok a lot of configuring,<br> 
+            choose a theme, write some tutorials and you are set! Now for the entirety of the lpe writing this documentation will take me a long time and besides<br>
+            I have recently discovered this neat thing called CI, and it would be so cool if the two could work together, (at least just a little)<br>
+            therfore I have for now created only a little demo. that works standalone from the LPE, but gets the point across quite neatly... <br>
+            it looks a little like this:<br>
+            <img src="media/docs.png"><br><br>
+            you can download the entire example here: <a href="bin/html.zip" download>html.zip</a>
+
+
+          </p>
+
+
+          <h3> So you want a CI-System ? </h3>
+          <p>
+            Before we begin...<br>
+            All of this for this measily dinky little checkmark:<br>
+            <img src="media/ci.png"><br><br>
+
+           Are you familiar with those cool badges you see on github repositories telling you about code-cov, code-quality, if the build is passing and so on?<br>
+           Have you ever wondered who updates these things? The answer is a "Continous Integration" - System. It turns out it is quite easy to add, but really hard to<br> 
+           configure such a system, let me give you an example:
+           </p>
+           <pre class="prettyprint lang-yml loadyml " id="yml/example.yml"></pre>
+           <p>
+           Looks pretty tame so far doesn't it ? you can totally see how this would work with cmake, how it probably is pretty easy to run unit-tests in this,<br>
+           how you could run your application,etc...<br>
+           You would probably add those steps one after the other, not to break anything and so on. Now imagine your main build is windows. you have a dozen<br>
+           dependencies, and to add insult to injury you really don't want to read through logs that are literal kilometers of text. Keep in mind that every build <br>
+           takes about 25 minutes to build on a system you have little to no control over. You may realize that this can get old really fast.<br>
+           I had to do about 60 individual builds with a lot of trouble-shooting inbetween before I got the result I wanted. <br>
+           The biggest problem I had with ci was definetly one big derp, that I didn't believe I just wasted literally two days of work on.<br> 
+           take a look at this yml:
+           </p>
+           <pre class="prettyprint lang-yml loadyml " id="yml/alpine.yml"></pre>
+           <p>
+           Do you spot the problem ? No ?
+           Ok what if I also give you the output?
+           </p>
+           <pre class="prettyprint lang-bash loadyml " id="outputs/alpine.out"></pre>
+           <p>
+           How about now ? still no ?<br>
+           Well if I took a second to actually look into the image "alpine" and took a second to look at the dependencies of premake, I would have solved that issue probably<br>
+           in under 10 hrs the issue is quite clear when you read through the documentation of alpine. Here is an excerpt from the main-page:<br><br>
+           "Alpine Linux is a security-oriented, lightweight Linux distribution based on musl libc and busybox."<br><br>
+           Musl libc hm?<br>
+           What is premake5 build against again? (Like most programs) Right ... glibc.
+           So that was a fun discovery.<br>
+           It also means that I have to use the inferior debian cloud package. I would have loved to use alpine, for it's lightweight-ness,<br>
+           but without glibc the binaries I build on this thing
+           wouldn't run on anything anyways. <br><br>
+           Here is the script that worked for me in the end.<br> In case you wonder what that DEBIAN_FRONTEND=noninteractive apt-get -yqq -o=Dpkg::Use-Pty=0 thing is,<br>
+           that is just apt-get with extra steps to make it a bit less verbose
+           </p>
+           <pre class="prettyprint lang-yml loadyml " id="yml/gitlab.yml"></pre>
+           <p>
+           
+
+           </p>
+          </p>
+
           <h3> Adventures into Obj Files </h3>
           <p>
             Anyone who worked with 3D models probably knows the .obj extension. it is a ubiquitous file-type that almost any 3d Program supports.<br>
@@ -76,7 +146,7 @@
             LUA-JIT!!<br>
             You might think that isn't particularly different, and you would be right, but luajit offers much better performance on raw scripts as it, as the name suggests,<br>
             compiles the lua just in time. This is great as it allows me to write modules directly in lua without that big of a performance hit. Lua has a few other advantages as well<br>
-            namely: It is well-established, it runs in a very minimal VM, that does not care from which thread it is being accessed and it can be instatiated multiple times.
+            namely: It is well-established, it runs in a very minimal VM, that does not care from which thread it is being accessed and it can be instatiated multiple times.<br>
             Here is a script that shows (almost) all of the features that the Engine currently supports via the Engine.
           <pre class="prettyprint lang-lua loadcpp " id="c++/lua_interp.lua">
           </pre>

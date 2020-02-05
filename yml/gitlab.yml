@@ -1,0 +1,46 @@
+image: debian
+
+stages:
+ - analyse_build
+ - test
+
+
+analyse:cppcheck:
+ stage: analyse_build
+ script:
+  - DEBIAN_FRONTEND=noninteractive apt-get -yqq -o=Dpkg::Use-Pty=0 update
+  - DEBIAN_FRONTEND=noninteractive apt-get -yqq -o=Dpkg::Use-Pty=0 install cppcheck
+  - cppcheck --project=libpixlengine-saxion.sln
+
+
+build:gcc:
+  stage: analyse_build
+  script:
+    - DEBIAN_FRONTEND=noninteractive apt-get -yqq -o=Dpkg::Use-Pty=0 update
+    - DEBIAN_FRONTEND=noninteractive apt-get -yqq install python3 cmake xorg-dev libglu1-mesa-dev libglfw3 libglfw3-dev libvulkan1 mesa-vulkan-drivers vulkan-utils libluajit-5.1-dev gcc g++ wget git make 
+    - wget -qO- https://github.com/premake/premake-core/releases/download/v5.0.0-alpha14/premake-5.0.0-alpha14-linux.tar.gz | tar xvz premake5
+    - python3 tools/prebuild_resource_compiler.py libpixlengine/
+    - chmod +x premake5
+    - cp premake5 /bin/
+    - premake5 gmake
+    - make 
+  artifacts:
+    paths:
+      - bin/Debug/test
+
+test:unit_tests:
+  stage: test
+  dependencies: 
+    - build:gcc
+  script:
+
+    - DEBIAN_FRONTEND=noninteractive apt-get -yqq -o=Dpkg::Use-Pty=0 update
+    - DEBIAN_FRONTEND=noninteractive apt-get -yqq install libgl1-mesa-dev xorg-dev libglu1-mesa-dev libglfw3 libglfw3-dev libvulkan1 mesa-vulkan-drivers vulkan-utils libluajit-5.1-dev
+    - chmod +x bin/Debug/test
+    - bin/Debug/test -r junit > catch.xml
+    
+  artifacts:
+    paths:
+      - catch.xml
+    reports:
+      junit: catch.xml

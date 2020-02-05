@@ -1,0 +1,17 @@
+image: debian
+
+stages:
+  - build
+
+
+build:gcc:
+  stage: build
+  script:
+    - apt-get -y update
+    - apt-get -y gcc, g++
+    - g++ main.cpp -o build.out
+    - mkdir build
+    - mv build.out build/
+  artifacts:
+    paths:
+      - build/
