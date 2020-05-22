@@ -1,0 +1,48 @@
+<article>
+    <h1> So you want a CI-System ? </h1>
+    <p>
+        Before we begin...<br>
+        All of this for this measily dinky little checkmark:<br>
+        <img src="media/ci.png"><br><br>
+
+        Are you familiar with those cool badges you see on github repositories telling you about code-cov, code-quality,
+        if the build is passing and so on?
+        Have you ever wondered who updates these things? The answer is a "Continous Integration" - System. It turns out
+        it is quite easy to add, but really hard to configure such a system, let me give you an example:
+    </p>
+    <pre class="language-yml loadyml " id="yml/example.yml"></pre>
+    <p>
+        Looks pretty tame so far doesn't it ? you can totally see how this would work with cmake, how it probably is
+        pretty easy to run unit-tests in this, how you could run your application, etc...<br>
+        You would probably add those steps one after the other, not to break anything and so on. Now imagine your main
+        build is windows. you have a dozen dependencies, and to add insult to injury you really don't want to read
+        through logs that are literal kilometers of text. Keep in mind that every build takes about 25 minutes to build
+        on a system you have little to no control over. You may realize that this can get old really fast.<br><br>
+        I had to do about 60 individual builds with a lot of trouble-shooting inbetween before I got the result I
+        wanted. The biggest problem I had with ci was definetly one big derp, that I didn't believe I just wasted literally two
+        days of work on.<br>
+        take a look at this yml:
+    </p>
+    <pre class="language-yml loadyml" id="yml/alpine.yml"></pre>
+    <p>
+        Do you spot the problem ? No ?<br>
+        Ok what if I also give you the output?
+    </p>
+    <pre class="language-bash loadbash " id="outputs/alpine.out"></pre>
+    <p>
+        How about now ? still no ?<br>
+        Well if I took a second to actually look into the image "alpine" and took a second to look at the dependencies
+        of premake, I would have solved that issue probably in under 10 hrs the issue is quite clear when you read
+        through the documentation of alpine. Here is an excerpt from the main-page:<br><br>
+        "Alpine Linux is a security-oriented, lightweight Linux distribution based on musl libc and busybox."<br><br>
+        Musl libc hm?<br>
+        What is premake5 build against again? (Like most programs) Right ... glibc. So that was a fun discovery.
+        It also means that I have to use the inferior debian cloud package. I would have loved to use alpine, for it's
+        lightweight-ness, but without glibc the binaries I build on this thing
+        wouldn't run on anything anyways. <br><br>
+        Here is the script that worked for me in the end.<br> In case you wonder what that
+        DEBIAN_FRONTEND=noninteractive apt-get -yqq -o=Dpkg::Use-Pty=0 thing is,<br>
+        that is just apt-get with extra steps to make it a bit less verbose
+    </p>
+    <pre class="language-yml loadyml" id="yml/gitlab.yml"></pre>
+</article>

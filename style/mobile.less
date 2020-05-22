@@ -1,5 +1,16 @@
 @import url('colors.less');
 
+main nav {
+  margin-top: calc(55px + 1vh);
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-in-out;
+}
+main nav.mobile_active
+{
+  height: auto;
+  max-height: 100vh;
+}
 /* single elements should be exactly 50px in size */
 main nav div {
   height: 50px;
@@ -14,6 +25,15 @@ main nav a {
 main nav div a {
   color: @main_light;
 }
+
+main nav i {
+  color: white;
+  position: absolute;
+  top: 1vh;
+  right: 1vh;
+  height: 2vh;
+}
+
 
 /* slightly adjust the position of the article */
 main article {

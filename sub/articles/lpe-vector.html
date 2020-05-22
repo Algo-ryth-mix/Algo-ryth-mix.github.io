@@ -1,0 +1,20 @@
+<article>
+    <h1> Vectorized Libpixlengine Math Module </h1>
+    <p> Recently I have been working on an improvement for the Math Module of LibPixlEngine, I decided to dwell into the
+        scary world of SSE and AVX 
+        once more and finally tried to improve matrix performance. For this purpose, I decided to also finally improve
+        the unit-test framework of 
+        lpe.unit-tests, I think I came up with an implementation that I like, that is still somewhat understandable.
+        Take a look for yourself!</p>
+    <pre class="language-cpp loadcpp match-braces" id="c++/fast_mat.cpp">
+        </pre>
+    </br>
+    <p> Now although this doesn't look like it improved the time complexity much, it is on average 10x faster, on a
+        testbed with 100 4x4 matrix multiplications,
+        the unoptimized approach takes on average ~1ms whilst the optimized one takes roughly ~0.1ms</p>
+    <p> Now keep in mind that this takes advantage of some extensions that not all processors support, therefore we have
+        to provide a fallback. 
+        luckily pixl.isa.InstructionSet already has the functionality to test for SSE:</p>
+    <pre class="language-cpp loadcpp match-braces" id="c++/test_isa.cpp">
+        </pre>
+</article>

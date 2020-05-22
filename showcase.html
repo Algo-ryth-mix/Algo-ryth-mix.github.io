@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <script type="text/javascript" src="js/prepare.js"></script>
-    <script type="text/javascript" src="js/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="js/prism.js"></script>
     <script type="text/javascript" src="js/load_code.js"></script>
     <script type="text/javascript" src="js/amalgamate.js"></script>
     <script type="text/javascript" src="js/nav.js"></script>
@@ -17,7 +17,7 @@
 
 </head>
 
-<body onload="amalgamate('index')">
+<body onload="amalgamate('showcase')">
     <main id="root">
         <article>
             <h1>Please wait, while I fetch the website</h1>
@@ -30,7 +30,7 @@
     <script id="amalgamate-after">
         function amalgamate_after() {
             loadcode();
-            nav_update();
+            nav_update('intern-showcase');
         }
     </script>
     <script src="https://kit.fontawesome.com/70ea7f05c3.js" crossorigin="anonymous"></script>

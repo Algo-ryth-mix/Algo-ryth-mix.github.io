@@ -8,46 +8,24 @@ function loadFile(filename)
   })
 }
 
-function PrettyPrintCppFile(str)
+function match_loader(loader,language,meta)
 {
-  str = str.replace(/&/g, "&amp;");
-  str = str.replace(/>/g, "&gt;");
-  str = str.replace(/</g, "&lt;");
-  str = str.replace(/"/g, "&quot;");
-  str = str.replace(/'/g, "&#039;");
-  return  PR.prettyPrintOne(str,"c++");
-}
-
-function PrettyPrintYMLFile(str)
-{
-  str = str.replace(/&/g, "&amp;");
-  str = str.replace(/>/g, "&gt;");
-  str = str.replace(/</g, "&lt;");
-  str = str.replace(/"/g, "&quot;");
-  str = str.replace(/'/g, "&#039;");
-  return  PR.prettyPrintOne(str,"yml");
-}
-
-function loadcode() {
-  var files = document.getElementsByClassName('loadcpp')
+  var files = document.getElementsByClassName(loader)
   for (var j = 0; j < files.length; j++) {
     loadFile(files[j].id).then(
       function(response){
         response.contents.then(
-           source => document.getElementById(response.source).innerHTML = PrettyPrintCppFile(source)
+           source => document.getElementById(response.source).innerHTML =  Prism.highlight(source,language,meta)
          )
       }
     )
   }
+}
 
-  var ymlfiles = document.getElementsByClassName('loadyml')
-  for (var j = 0; j < ymlfiles.length; j++) {
-    loadFile(ymlfiles[j].id).then(
-      function(response){
-        response.contents.then(
-           source => document.getElementById(response.source).innerHTML = PrettyPrintYMLFile(source)
-         )
-      }
-    )
-  }
+
+function loadcode() {
+  match_loader('loadcpp',Prism.languages.cpp,'cpp')
+  match_loader('loadyml',Prism.languages.yaml,'yaml')
+  match_loader('loadbash',Prism.languages.bash,'bash')
+  match_loader('loadlua',Prism.languages.lua,'lua')
 }

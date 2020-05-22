@@ -1,0 +1,13 @@
+# index amalgamate file, this creates the main page
+
+# this creates the logo and the easter-egg when you hover it!
+easter-egg
+
+# this creates the navigations
+nav
+
+# this is the basic personal information
+personal
+
+# this is the more in depth explanation of myself
+detail

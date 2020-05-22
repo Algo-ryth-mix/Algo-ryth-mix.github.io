@@ -1,4 +1,4 @@
-$where premake
+$which premake
 /bin/premake
 $premake gmake 
 error: premake no such command

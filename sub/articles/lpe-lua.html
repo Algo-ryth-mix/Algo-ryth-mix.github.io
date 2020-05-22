@@ -1,0 +1,40 @@
+<article>
+    <h1> Lua Integration on LibPixlEngine </h1>
+    <p>
+        Working with LibPixlEngine, although I naturally get a bit blind for my pet-project, can get quite tedious.
+        depending on how much code you have changed, how much of the library you are using and how powerful your rig is,
+        compile times can easily surpass multiple minutes. Which, for a language like c++ where nullptrs are a thing,
+        can get really old really quick. The approach most Engines choose is therefore to include some kind of scripting
+        environment.<br><br> Now in LibPixlEngine this is inherently difficult because of multiple things:<br>
+    </p>
+    <li> LPE is highly multithreaded. a script-environment that cannot handle that is clearly out of place.<br>
+    </li>
+    <li> LPE has the concept of task priorities, a script can't simply have an onEarlyUpdate() and onLateUpdate()
+        method<br>
+    </li>
+    <li>LPE has variable frame and tick-rates, it is of utmost importance that the Script receives a DeltaTime in some
+        way or another<br>
+    </li>
+    <li>and last but not least, LPE is ECS-based meaning you could attach a script (no matter how much sense that may
+        make) to literally everything<br>
+    </li>
+    <br><br>
+    <p>All of these things made the choice for a Scripting language really difficult, but in the end I decided to not go
+        with my usual suspect(LUA), but go with the next best thing.<br>
+        LUA-JIT!!<br><br>
+        You might think that isn't particularly different, and you would be right, but luajit offers much better
+        performance on raw scripts as it, as the name suggests,
+        compiles the lua just in time. This is great as it allows me to write modules directly in lua without that big
+        of a performance hit. Lua has a few other advantages as well;
+        namely: It is well-established, it runs in a very minimal VM, that does not care from which thread it is being
+        accessed and it can be instatiated multiple times.
+        Here is a script that shows (almost) all of the features that the Environment currently supports via the Engine.
+        <pre class="language-lua loadlua match-braces" id="c++/lua_interp.lua"></pre>
+        <br>
+        <p>As you can see the Script has full control of the underlying Component, it can also query things like the
+            parent and the children,<br>
+            and interact with some basic components of the engine itself, as well as construct some mathematical
+            constructs.
+        </p>
+        <br>
+</article>

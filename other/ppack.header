@@ -1,0 +1,12 @@
+header:
+    -u16    number of entries
+    -u64    first entry size
+    entries:
+        -u64    size of entry
+        -u64    offset of entry (this field can technically be omitted)
+
+entry:
+    -cstr   name of entry
+    -raw    data
+
+...

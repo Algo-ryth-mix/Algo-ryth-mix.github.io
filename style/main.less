@@ -2,7 +2,11 @@
 @import url('colors.less');
 @import url('mobile.less') screen and (max-width:768px);
 @import url('desktop.less') screen and (min-width:767px);
-@import url('code.css');
+@import url('https://unpkg.com/dracula-prism/css/dracula-prism.css');
+
+p {
+  text-align: justify;
+}
 
 * {
   margin: 0;
@@ -18,7 +22,7 @@ a,h1,h2,h3 {
 h1,h2,h3 {
   margin-top: 10px;
   margin-bottom: 10px;
-  color: white;
+  color: @main_dark;
 }
 
 /* BIG TEXT for h1 */
@@ -29,7 +33,7 @@ h1 {
 /* nicer color + better style for anchors */
 a {
   text-decoration: none;
-  color: @accent_light;
+  color: @accent_dark;
   font-weight: bold;
   &:hover
   {
@@ -41,12 +45,12 @@ p,li {
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   line-height: 22pt;
   font-size: 12pt;
-  color: @main_light;
+  color: @main_medium;
 }
 
 /* links in the navigation should be black */
 main nav a {
-  color: @main_dark;
+  color: @main_light;
   font-size: 20px;
 }
 /* except for when they have been clicked */
@@ -60,11 +64,12 @@ footer p {
   font-size: 11.5px;
   padding: 20px;
   line-height: normal;
+  color: @accent_light;
 }
 
 body
 {
-  background-color: @main_dark;
+  background-color: @main_light;
 }
 
 article .tldr+p {

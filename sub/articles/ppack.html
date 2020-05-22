@@ -1,0 +1,17 @@
+<article>
+    <h1> Introducing: Pixl Pack!</h1>
+    <h3> Storing stuff together since 2020</h3>
+
+    <p> You might ask. <i>A What now ?</i>  Pixl-Pack is a system to literally glue files together in a not quite random way. In a sense it is simmilar to a tar archive.
+    in a lot of sense actually. The simple yet beautiful difference is the amount of meta-data ppack stores. Namily none! You get a file-descriptor, which can be a path or just a string or whatever limited to 256 chars and the data and that is it!<br><br>
+    <i>Why?</i> Simple! A game really does not care about the wonders of -rwxr-xr-x - stuff or if the file is a symlink or some other shenanigan it wants pure data. And PixlPack or ppack can deliver that. in fact the data is so unmangled you can read it straight out of the input array. No uncompression, inflation or what not needed! It uses a small header(which in theory can be reduced even more, it is still in beta!), which looks a bit like this.
+    </p>
+    <pre class="language-yaml loadyml" id="other/ppack.header"></pre>
+    <p>
+    <i>This sound great an all, but why would I use this over tar ?</i><br>
+    The simple answer is simplicity. ppack is written to support c and c++ out of the box. with an easy to export api, that can be used anywhere:
+    </p>
+    <pre class="language-cpp loadcpp" id="c++/ppack-demo.cpp"></pre>
+    <p>Isn't this delightfully easy? As with most stuff I write, you can find ppack on my public repositories! <br>
+    for those that can't be bothered to search for it: <a href="https://github.com/Algo-ryth-mix/ppack/">here it is!</a></p>
+</article>

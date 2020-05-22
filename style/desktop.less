@@ -20,6 +20,13 @@ main .image-container {
 
 }
 
+article p {
+  width: 60%;
+}
+article pre {
+  width: 60%;
+}
+
 /* ##########
  * NAVIGATION
  */
@@ -44,6 +51,10 @@ main nav{
 
 }
 
+main nav i {
+  display: none !important;
+}
+
 
 main article {
   position: relative;
@@ -62,9 +73,9 @@ main article {
  left: 0;
  right: 0;
  height: calc(5vh + 65px);
- background: #fff;
+ background: @main_dark;
  z-index: 99;/* just below the navigation */
- border-bottom: 4px solid  @accent_dark; /* narly little bar at the bottom */
+ border-bottom: 4px solid  @accent_light; /* narly little bar at the bottom */
 
 }
 
@@ -96,12 +107,15 @@ footer {
 h1::before{
   display: block;
   content: " ";
-  margin-top: calc( - (15vh + 10px) );
-  height: calc(  (15vh + 10px) );
+  margin-top: -150px;
+  height: 150px;
   visibility: hidden;
   pointer-events: none;
 }
 
+h1{
+  margin-top: 50px;
+}
 
 
 /* #######
@@ -118,7 +132,7 @@ h1::before{
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
-  background-color: black;
+  background-color: @main_dark;
   color: #fff;
   text-align: center;
   padding: 5px 5px;
@@ -130,6 +144,10 @@ h1::before{
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
+}
+
+article li {
+  margin-left: 35px;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */

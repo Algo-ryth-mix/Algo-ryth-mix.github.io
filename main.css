@@ -1,4 +1,4 @@
-@import url('https://unpkg.com/dracula-prism/css/dracula-prism.css');
+@import url('code.css');
 @font-face {
   font-family: 'IBM Plex Mono';
   font-style: italic;
@@ -84,16 +84,6 @@
   src: local('IBM Plex Serif'), local('IBMPlexSerif'), url(https://fonts.gstatic.com/s/ibmplexserif/v8/jizDREVNn1dOx-zrZ2X3pZvkTiUf2zI.ttf) format('truetype');
 }
 @media screen and (max-width: 768px) {
-  main nav {
-    margin-top: calc(55px + 1vh);
-    max-height: 0px;
-    overflow: hidden;
-    transition: max-height 0.2s ease-in-out;
-  }
-  main nav.mobile_active {
-    height: auto;
-    max-height: 100vh;
-  }
   /* single elements should be exactly 50px in size */
   main nav div {
     height: 50px;
@@ -105,14 +95,7 @@
     padding: 15px 8vw;
   }
   main nav div a {
-    color: #f8f8f8;
-  }
-  main nav i {
-    color: white;
-    position: absolute;
-    top: 1vh;
-    right: 1vh;
-    height: 2vh;
+    color: #9599A2;
   }
   /* slightly adjust the position of the article */
   main article {
@@ -171,12 +154,6 @@
     border: 3px solid black;
     padding: 2px;
   }
-  article p {
-    width: 60%;
-  }
-  article pre {
-    width: 60%;
-  }
   /* ##########
  * NAVIGATION
  */
@@ -200,9 +177,6 @@
     padding: 15px;
     border-radius: 2px;
   }
-  main nav i {
-    display: none !important;
-  }
   main article {
     position: relative;
     margin-top: calc(5vh + 65px + 20px);
@@ -218,10 +192,10 @@
     left: 0;
     right: 0;
     height: calc(5vh + 65px);
-    background: #1E2C39;
+    background: #fff;
     z-index: 99;
     /* just below the navigation */
-    border-bottom: 4px solid #6ead3a;
+    border-bottom: 4px solid #497723;
     /* narly little bar at the bottom */
   }
   /* ##################
@@ -248,13 +222,10 @@
   h1::before {
     display: block;
     content: " ";
-    margin-top: -150px;
-    height: 150px;
+    margin-top: calc(- 15vh + 10px);
+    height: calc(15vh + 10px);
     visibility: hidden;
     pointer-events: none;
-  }
-  h1 {
-    margin-top: 50px;
   }
   /* #######
  * TOOLTIP
@@ -269,7 +240,7 @@
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: #1E2C39;
+    background-color: black;
     color: #fff;
     text-align: center;
     padding: 5px 5px;
@@ -279,9 +250,6 @@
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
-  }
-  article li {
-    margin-left: 35px;
   }
   /* Show the tooltip text when you mouse over the tooltip container */
   .tooltip:hover .tooltiptext {
@@ -337,7 +305,7 @@ h2,
 h3 {
   margin-top: 10px;
   margin-bottom: 10px;
-  color: #1E2C39;
+  color: white;
 }
 /* BIG TEXT for h1 */
 h1 {
@@ -346,7 +314,7 @@ h1 {
 /* nicer color + better style for anchors */
 a {
   text-decoration: none;
-  color: #497723;
+  color: #6ead3a;
   font-weight: bold;
 }
 a:hover {
@@ -357,11 +325,11 @@ li {
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   line-height: 22pt;
   font-size: 12pt;
-  color: #324151;
+  color: #9599A2;
 }
 /* links in the navigation should be black */
 main nav a {
-  color: #f8f8f8;
+  color: #1E2C39;
   font-size: 20px;
 }
 /* except for when they have been clicked */
@@ -374,10 +342,9 @@ footer p {
   font-size: 11.5px;
   padding: 20px;
   line-height: normal;
-  color: #6ead3a;
 }
 body {
-  background-color: #f8f8f8;
+  background-color: #1E2C39;
 }
 article .tldr + p {
   float: left;
