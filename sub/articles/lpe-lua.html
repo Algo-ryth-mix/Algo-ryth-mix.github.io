@@ -7,7 +7,7 @@
         can get really old really quick. The approach most Engines choose is therefore to include some kind of scripting
         environment.<br><br> Now in LibPixlEngine this is inherently difficult because of multiple things:<br>
     </p>
-    <li> LPE is highly multithreaded. a script-environment that cannot handle that is clearly out of place.<br>
+    <li> LPE is highly multi-threaded. a script-environment that cannot handle that is clearly out of place.<br>
     </li>
     <li> LPE has the concept of task priorities, a script can't simply have an onEarlyUpdate() and onLateUpdate()
         method<br>
@@ -27,7 +27,7 @@
         compiles the lua just in time. This is great as it allows me to write modules directly in lua without that big
         of a performance hit. Lua has a few other advantages as well;
         namely: It is well-established, it runs in a very minimal VM, that does not care from which thread it is being
-        accessed and it can be instatiated multiple times.
+        accessed and it can be instantiated multiple times.
         Here is a script that shows (almost) all of the features that the Environment currently supports via the Engine.
         <pre class="language-lua loadlua match-braces" id="c++/lua_interp.lua"></pre>
         <br>
