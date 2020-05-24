@@ -9,9 +9,9 @@ namespace gfx = pixl::graphics;
 
 //create a bunch of registries
 //note that only one of them is a normal provider that points to a directory
-provider_registry::gen_provider<sandbox_provider>("./assets/sandbox/",              "sandbox");
-provider_registry::gen_provider<virtual_provider>("./pixlfs/assets.pp.xz",          "virtual", fs::READONLY);
-provider_registry::gen_provider<network_provider>(net::game_server->files(),        "network");
+provider_registry::gen_provider<sandbox_provider>("./assets/sandbox/","sandbox");
+provider_registry::gen_provider<virtual_provider>("./pixlfs/assets.pp.xz","virtual", fs::READONLY);
+provider_registry::gen_provider<network_provider>(net::game_server->files(),"network");
 
 //We traverse all of the providers with the same
 //function, also we can traverse into archives
