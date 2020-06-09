@@ -209,6 +209,7 @@
     left: 10vw;
     width: 80vw;
     margin-bottom: 100px;
+    padding-top: 10px;
     z-index: 0;
   }
   /*easy fix to make sure that the navigations isn't disturbed by a bunch of text in the background */

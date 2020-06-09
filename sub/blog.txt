@@ -1,6 +1,7 @@
 easter-egg
 nav
 
+articles/close-enough
 articles/space-game-article
 articles/portfolio-rework
 articles/pixl_fs
