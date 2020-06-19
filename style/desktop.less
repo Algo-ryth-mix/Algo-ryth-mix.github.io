@@ -1,5 +1,13 @@
 @import url('colors.less');
 
+.only-mobile {
+  display: none;
+}
+
+p {
+  text-align: justify;
+}
+
 /* ###############
  * THEFKNMOON LOGO
  */
@@ -83,23 +91,6 @@ main article {
 /* ##################
  * FOOTER POSITIONING
  */
-body {
-  display: flex;
-  flex-direction: column;
-}
-main {
-  flex: 1 0 auto;
-}
-
-footer {
-  position: relative;
-  width: 100%;
-  background-color: @main_dark;
-  color: #fff;
-
-  height: 70px;
-  flex-shrink: 0;
-}
 
 /* #########################
  * SCROLL TO RIGHT POSITION
@@ -174,9 +165,8 @@ article li {
 
 .personal-image-container
 {
-  margin: 0px 200px;
+  margin: 0 20vw 0 0;
   float: right;
-  display: inline;
   background-image: url("../media/Photo_denoised.png");
   background-position: center;
   background-size: cover;

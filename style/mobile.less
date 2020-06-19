@@ -1,5 +1,14 @@
 @import url('colors.less');
 
+.not-mobile {
+  display: none;
+}
+h1,h2,h3,.mobile-center {
+  text-align: center !important;
+  text-justify: auto;
+}
+
+
 main nav {
   margin-top: calc(55px + 1vh);
   max-height: 0px;
@@ -68,4 +77,9 @@ footer {
   height: 200px;
   border-radius: 3px;
   border: 2px solid @accent_light;
+}
+article img {
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
 }

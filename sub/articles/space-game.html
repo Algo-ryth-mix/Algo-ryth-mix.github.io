@@ -5,6 +5,6 @@
         @media screen and (max-width:1199px){#kill-the-data-game{display: none;}}
         @media screen and (min-width:1200px){#kill-the-data-game{width: 1024px;height: 800px;}#kill-the-data-game-alt-text{display: none;}}
     </style>
-    <iframe id="kill-the-data-game" src="https://kill-the-data.github.io" frameborder="0" scrolling="no"> </iframe>
-    <p id="kill-the-data-game-alt-text"> There would be a cool game here, but sadly your screen is to small :/</p>
+    <iframe onload="removeIfMobile('kill-the-data-game')" id="kill-the-data-game" src="https://kill-the-data.github.io" frameborder="0" scrolling="no"> </iframe>
+    <p id="kill-the-data-game-alt-text"> Sorry this game does not work on mobile as WebGL does not have good performance in mobile browsers. Please visit this page on a desktop device!</p>
 </article>
