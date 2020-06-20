@@ -401,3 +401,6 @@ article .tldr + p {
   float: left;
   width: 50vw !important;
 }
+.fa-discord {
+  transform: translateY(6.3%);
+}
