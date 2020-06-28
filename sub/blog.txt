@@ -1,6 +1,7 @@
 easter-egg
 nav
 
+articles/mountains
 articles/space-game-released
 articles/close-enough
 articles/space-game-article
