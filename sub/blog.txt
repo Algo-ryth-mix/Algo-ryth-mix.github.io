@@ -1,6 +1,8 @@
 easter-egg
 nav
 
+articles/cpp-multithreading
+articles/learning-js
 articles/mountains
 articles/space-game-released
 articles/close-enough

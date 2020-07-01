@@ -24,6 +24,7 @@ function match_loader(loader,language,meta)
 
 
 function loadcode() {
+  match_loader('loadjs',Prism.languages.js,'js')
   match_loader('loadcpp',Prism.languages.cpp,'cpp')
   match_loader('loadyml',Prism.languages.yaml,'yaml')
   match_loader('loadbash',Prism.languages.bash,'bash')
