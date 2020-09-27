@@ -29,8 +29,8 @@ function make_blog_entry(content,location)
 {
   if(content.startsWith("<!-- Blog -->")){
     console.log("find:" + content.search("<!-- Jumplink -->").toString());
-    const title = content.substr(content.search("<!--Title")+10,content.search("Title-->") - content.search("<!--Title") - 11); 
-    return content.substr(0,content.search("<!-- Jumplink -->")) + `<br><a href='article.html?x=${location}&t=${title}'> Keep Reading </a></article>`
+    
+    return content.substr(0,content.search("<!-- Jumplink -->")) + `<br><a href='article.html?x=${location}'> Keep Reading </a></article>`
   }
   else return content
 }
@@ -56,6 +56,12 @@ async function amalgamate(manifest,blogify = false,manifest_is_contents = false)
 
     line = line.replace(".","");
     const content = await loadFile("./sub/"+line+".html").then(response => response.contents.then(c => c));
+
+    if (content.includes("<!--Title"))
+    {
+      const title = content.substr(content.search("<!--Title")+10,content.search("Title-->") - content.search("<!--Title") - 11); 
+      window.document.title = title;
+    }
     if(blogify)
     {
       return make_blog_entry(content,line);
