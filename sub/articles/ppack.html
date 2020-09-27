@@ -1,8 +1,13 @@
+<!-- Blog -->
+<!--Title PPack Title-->
 <article>
     <h1> Introducing: Pixl Pack!</h1>
     <h3> Storing stuff together since 2020</h3>
 
-    <p> You might ask. <i>A What now ?</i>  Pixl-Pack is a system to literally glue files together in a not quite random way. In a sense it is similar to a tar archive.
+    <p> You might ask. <i>A What now ?</i>  Pixl-Pack is a system to literally glue files together in a not quite random way.
+    </p>
+    <!-- Jumplink -->
+    <p>In a sense it is similar to a tar archive.
     in a lot of sense actually. The simple yet beautiful difference is the amount of meta-data ppack stores. Namely none! You get a file-descriptor, which can be a path or just a string or whatever limited to 256 chars and the data and that is it!<br><br>
     <i>Why?</i> Simple! A game really does not care about the wonders of -rwxr-xr-x - stuff or if the file is a symlink or some other shenanigan it wants pure data. And PixlPack or ppack can deliver that. in fact the data is so unmangled you can read it straight out of the input array. No decompression, inflation or what not needed! It uses a small header(which in theory can be reduced even more, it is still in beta!), which looks a bit like this.
     </p>

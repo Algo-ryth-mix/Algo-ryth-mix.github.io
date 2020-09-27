@@ -15,13 +15,27 @@
     <meta name="theme-color" content="#4d394b">
 </head>
 
-<body onload="amalgamate('blog',true)">
-    <main id="root" class="blog-dense">
+<body onload="amalgamate(make_manifest(findGetParameter('x')),false,true)">
+    <main id="root">
         <article>
             <h1>Please wait, while I fetch the website</h1>
         </article>
-
     </main>
+
+    <div class="utterances-style">
+        <div>
+    <script src="https://utteranc.es/client.js"
+        repo="Algo-ryth-mix/Algo-ryth-mix.github.io"
+        issue-term="title"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+    </script>
+    </div>
+</div>
+
+
     <footer>
         <p> Website by Raphael Baier &copy;
     </footer>
@@ -29,6 +43,14 @@
         function amalgamate_after() {
             loadcode();
             nav_update('intern-blog');
+        }
+    </script>
+    <script>
+        t = findGetParameter('t');
+        if(t !== "")
+        {
+            if(t.includes('eval') || t.includes('script') || t.includes('<') || t.includes('>')) { t = "Bad Hacker Boy"; }
+            window.document.title = t;
         }
     </script>
     <script src="https://kit.fontawesome.com/70ea7f05c3.js" crossorigin="anonymous"></script>

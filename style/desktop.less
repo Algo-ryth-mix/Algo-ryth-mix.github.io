@@ -175,3 +175,38 @@ article li {
   border-radius: 3px;
   border: 2px solid @accent_light;
 }
+
+
+.blog-dense > article:nth-of-type(1) {
+  h1::before {
+    display: block;
+    content: " ";
+    margin-top: -150px;
+    height: 150px;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  padding: 0px !important;
+}
+
+.blog-dense > article {
+  margin-bottom: 80px;
+}
+
+.blog-dense > article:not(:nth-of-type(1)) {
+  h1::before {
+    margin: 0;
+    height: 0;
+  }
+  padding: 0;
+  margin-top: 0;
+}
+.utterances-style {
+  width:80vw;
+  left: 10vw;
+  position:relative;
+}
+.utterances-style > div
+{
+   width: 60%;
+}

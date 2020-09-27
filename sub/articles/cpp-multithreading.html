@@ -1,9 +1,11 @@
+<!-- Blog -->
+<!--Title CppMultiThread Title-->
 <article>
     <h1>Making worse enemies</h1>
     <h2>aka multi-threading</h2>
     <p> I cannot even express how much pure hatred I feel towards multi-threading. Whoever thought more cores are the way to go, clearly never programmed for more than one. Or at least not
     in c++. Now I know of the marvelous structures known as std::thread, std::async, std::mutex, etc...
-    and I like them, they are great tools for simplifying your multi-threaded applications. But the debugging process of such applications is just bad. it took me the better of a day to figure out that I was not joining threads that should have been joined, and the error I got was not particularly helpful. But I guess in the end I made some lowish-level abstractions that I really like, that may find their way into libpixlengine.
+    and I like them, they are great tools for simplifying your multi-threaded applications. But the debugging process of such applications is just bad. <!-- Jumplink --> it took me the better of a day to figure out that I was not joining threads that should have been joined, and the error I got was not particularly helpful. But I guess in the end I made some lowish-level abstractions that I really like, that may find their way into libpixlengine.
     </p>
     <pre class="language-cpp loadcpp " id="c++/multithreading.cpp"></pre>
 </article>
