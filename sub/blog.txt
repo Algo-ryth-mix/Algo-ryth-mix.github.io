@@ -1,6 +1,7 @@
 easter-egg
 nav
 
+articles/shaderpreprocess
 articles/cpp-multithreading
 articles/learning-js
 articles/mountains

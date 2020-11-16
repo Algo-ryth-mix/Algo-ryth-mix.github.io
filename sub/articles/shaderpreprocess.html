@@ -1,0 +1,88 @@
+<!-- Blog -->
+<!--Title Preprocessing Shaders Title-->
+<article>
+
+    <h1>Preprocessing Shaders</h1>
+    <h3>Aka how does python work again?</h3>
+    <p>
+        One integral part of the <a href="https://github.com/Legion-Engine/Legion-Engine">Legion-Engine</a> is rendering. 
+        If you ever worked with GLSL you have probably come across is limitations. Naturally we did not want that for the Engine.
+        This seemed like a grand opportunity to test if my python skills are still up to spec. 
+        In the end we ended up adding some pretty neat features to our custom shading language.
+        Due to the modular design of the compiler we can add modules with relative ease (even for people that have not worked with Python before).
+    </p>
+        <!-- Jumplink -->
+    <p>
+        Here is an example of a pbr shader, courtesy of <a href="https://glynleine.com">Glyn Leine</a>.
+        <pre class="language-glsl loadcpp" id="legion-shader/pbr.shs"></pre>
+        <br>
+    </p>
+    <h3> Adding more rules </h3>
+    <p>
+        So how do you add more rules to the compiler? Let's look at a typcial Rewriter.
+        Clone the repository <a href="https://github.com/Legion-Engine/LegionShaderPreprocess">here</a>,
+        copy and paste the contents from this file and add it to a new file called rewrite_rules/your_custom_rule.py:
+    </p>
+    <pre class="language-py loadpy" id="py/rewrite.py"></pre>
+    <br>
+    <p>
+        Ok ... lots to digest. Let's go through this step by step.
+        <br>
+        First lets look at the imports :
+    </p>
+        <pre class="language-py">import re
+from typing import Dict, List, Tuple
+
+from rewrite_rules.rewrite_base import RewriteBase
+from vprint import vprint1</pre>
+    <p>
+        <ul>
+        <li><code>re</code> and <code>typing</code> are just standard python imports for regex and some typing information.<br></li>
+        <li><code>rewrite_base</code> is more interesting, it contains the Base class for all rewriters in the compiler.<br>
+        It mandates that a function <code>rewrite_source</code> must exist that takes the source and some meta information.<br>
+        It also dictates that the function needs to return a List of sources and meta information.<br></li>
+        <li><code>vprint</code> is used to print information based on verbosity level.</li>
+        </ul>
+    </p>
+    <p>
+        Next, lets look at the class definition and variables.
+    </p>
+        <pre class="language-py">class XToY(RewriteBase):
+    rgx = re.compile('X')
+    pattern = 'Y'</pre><br>
+    <p>
+        We declare a class called <code>XToY</code> here, and make it inherit from <code>RewriteBase</code>
+        We can also see what it is probably going to do. we have a regex pattern that matches all "X"s and we are going to replace them with "Y"
+        Now that we have that we just need to setup the logic to actually do that.
+    </p>
+    <pre class="language-py" >def rewrite_source(self,source, meta):
+    vprint1("[XToY] Rewriter started")
+    return [(self.rgx.sub(self.pattern,source), meta)]</pre>
+    <p>
+        For brevity I omitted the type decorations here, they are completely optional in Python anyways.
+        I would still recommend adding them to wherever possible to allow for better linting from your favourite IDE.
+        <br>
+        We can see that this function takes a source and some meta information. We don't want to do anything with that meta information so we simply pass it to the output
+        For debugging reasons we also inform the user of the compiler that this rewriter was just invoked with <code>vprint1</code> which prints this information at verbosity level 1 (or <code>-v</code>).<br>
+
+        Finally lets take a look at the slighly alien looking return statement.
+        First observer that the return type is a List of Tuples, hence why the statement is wrapped in <code>[()]</code>
+        The reason for that is that a rewriter might split sources into multiple other sources.
+        The first part of the tuple is the source. We simply apply the regex to it and call it a day. The second part is the afformentioned meta information.
+    </p>
+    
+    <h3>
+        Adding the step to the pipeline
+    </h3>
+    <p>
+        This is probably the easiest step:
+        Simply add 
+        <code>from .your_custom_rule import XToY</code> to the <code>__init__.py</code> of the rewrite rules.
+        Then add <code>"XToY"</code> to <code>__all__</code>. Finally add <code>XToY</code> the variable <code>pipeline</code> in main.py
+    </p>
+    <h3>And we are done!</h3>
+    <p>When invoking the compiler you should now notice that all of your "X"s in your shadercode are automatically rewriten to "Y". Granted this is not super useful, but that is how most of the rewriters work.</p> 
+    <p>
+    For more examples of rewriters visit the github of the repository <a href="https://github.com/Legion-Engine/LegionShaderPreprocess">here</a>, or take a look at other rules in <code>rewrite_rules</code>
+    </p>
+</article>

@@ -29,4 +29,5 @@ function loadcode() {
   match_loader('loadyml',Prism.languages.yaml,'yaml')
   match_loader('loadbash',Prism.languages.bash,'bash')
   match_loader('loadlua',Prism.languages.lua,'lua')
+  match_loader('loadpy',Prism.languages.lua,'py')
 }
