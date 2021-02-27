@@ -1,4 +1,4 @@
-@import url('https://unpkg.com/dracula-prism/css/dracula-prism.css');
+@import url('https://unpkg.com/dracula-prism/dist/css/dracula-prism.css');
 @font-face {
   font-family: 'IBM Plex Mono';
   font-style: italic;
