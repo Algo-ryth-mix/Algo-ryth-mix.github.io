@@ -2,6 +2,7 @@ easter-egg
 nav
 
 
+articles/gdb
 articles/golang
 articles/shaderpreprocess
 articles/cpp-multithreading
