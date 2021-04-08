@@ -1,0 +1,3 @@
+algorythmix@lubuntu ~/repositories/buggy.cpp $ ./a.out
+*** stack smashing detected ***: terminated
+[1]     5453 abort (core dumped)  ./a.out

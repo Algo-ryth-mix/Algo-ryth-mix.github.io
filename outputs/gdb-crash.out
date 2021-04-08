@@ -1,0 +1,7 @@
+(gdb) run
+Starting program: /home/algorythmix/repositories/buggy.cpp/a.out
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000055555555521c in main() at main.cpp:8
+8               x[i] = i;
+(gdb)

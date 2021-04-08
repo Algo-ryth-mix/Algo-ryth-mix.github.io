@@ -1,0 +1,5 @@
+(gdb) p x
+$3 = {0, 1}
+(gdb) ptype x
+type = int [2]
+(gdb)

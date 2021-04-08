@@ -1,0 +1,4 @@
+(gdb) info locals
+i = 1128
+x = {0, 1}
+(gdb) 

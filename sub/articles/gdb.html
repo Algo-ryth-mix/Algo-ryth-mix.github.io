@@ -1,0 +1,85 @@
+<!-- Blog -->
+<!--Title GDB Adventures Title-->
+
+<article>
+    <h1>GDB Adventures</h1>
+    <h3>God I love my IDE</h3>
+
+    <p> If you are a c++ developer on linux, you are probably familiar with <code>gdb</code>. 
+        Together with <code>gcc</code> (or <code>g++</code>) they are the base tools that a 
+        c or c++ developer needs on linux. I have been developing for windows most of my life,
+        and while I try to keep my code compatible with linux, I do not usually test it that
+        thoroughly. 
+    </p>
+    <!-- Jumplink -->
+    <p>
+        For the <a href="/article.html?x=articles/golang">previous</a> project in go I decided to work in linux for a change. I therfore needed to use the tools
+        that are available on the platform, which was great since I already wanted to learn how to use gdb anyways.
+    </p>
+    <h3> Start by writing a buggy program </h3>
+    <p> For the sake of brevity (and also because documenting your own debugging adventures is painful) I will create an intentionally buggy program to show a little how
+        to use gdb here, but this should work the same in real life scenarios (and also in almost all compiled languages for linux)
+    </p> 
+    <pre class="loadcpp language-cpp" id="c++/buggy.cpp"></pre>
+
+    <p>
+        Now to be fair, this is maybe a little more than just a "typo". It is also blatently obvious, but it serves the purpose well.
+        (I actually had a really hard time getting this to fail, overwriting just a single value would consistently run <i>just fine</i>)
+   
+        To compile this use: <br><code>g++ main.cpp -O0 -g</code><br>
+        Now that we have the good old <code>a.out</code> we can verify that it
+        does in fact crash:
+    </p>
+    <pre class="language-bash loadbash" id="outputs/buggy.out"></pre>
+    <p>
+        Now I'll admit that is not quite what I wanted, but still debuggable.
+        to start debugging this we need to launch the application with gdb
+        to do this we can run <code>gdb a.out</code> you should be dropped into a shell
+        that starts with "(gdb)"
+    </p>
+    <h3> How do I quit <span style="text-decoration: line-through;">vim</span> gdb?</h3>
+    <p>
+        You'll notice that when you launch gdb nothing really happens at first. It loaded your program
+        but that is about it. The most basic commands you can use right now are <code>run</code> and <code>quit</code>
+        (which is conveniently also the answer to the heading of this section)<br>
+
+        additionally you can set breakpoints, provided you know where in the source code you want to set them.
+    </p>
+    <p><br>
+    <b>Basic crashing</b> Let us start by running the program in gbd: type <code>run</code> into the terminal.
+    </p>
+    <pre class="language-bash loadbash" id="outputs/gdb-crash.out"></pre>
+    <p> 
+        Already that is a whole lot more infomation than simply "aborted".
+        It tells us where the crash happened. 3 times in fact
+        <ul> 
+            <li>in main()</li>
+            <li>in main.cpp in line 8</li>
+            <li> in the line that looks like <code>x[i] = i;</code></li>
+        </ul>
+    </p>
+    <p>
+        But wait, there is more!
+        if you type <code>l</code> and press enter, you get a bit of an overview of the sorounding code.
+        (which happens to be basically the entire program for this example).<br><br>
+        <b>Getting to the root of it</b> to figure this one out we need to get a little bit of information about the local variables
+        this also happens to be the command for that. <code>info locals</code> shows you the variables that we can see here.
+    </p>
+    <pre class="loadbash language-bash" id="outputs/locals.out"></pre>
+    <p>
+        With that we can easily spot the "mistake" here, clearly the array only has space for 2 elements, 
+        while the iterator has already reached 1128. 
+        You can also print a single variable with <code>p "variable name"</code>
+        to get the size of an array you can use <code>ptype "variable name"</code>
+    </p>
+    <pre class="loadbash language-bash" id="outputs/p-ptype.out"></pre>
+    <p> Of course modern IDEs and Editors like VS-Code have instrumentation for gdb
+        making this process a whole lot more straight forward. (especially setting breakpoints
+        which would normally happen with <code>break "filename":"line"</code>)
+    </p>
+    <img src="media/vscode-supp.png">
+    <img src="media/vars.png">
+    <h3>Solving the issue</h3>
+    <p> Simply increase the array to sufficent size and our problems will be gone!</p>
+    <img src="media/fixed.png">
+</article>
