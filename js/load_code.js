@@ -30,4 +30,6 @@ function loadcode() {
   match_loader('loadbash',Prism.languages.bash,'bash')
   match_loader('loadlua',Prism.languages.lua,'lua')
   match_loader('loadpy',Prism.languages.lua,'py')
+  match_loader('loadgo',Prism.languages.go,'go')
+  match_loader('loadhtml',Prism.languages.html,'html')
 }

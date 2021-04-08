@@ -1,6 +1,8 @@
 easter-egg
 nav
 
+
+articles/golang
 articles/shaderpreprocess
 articles/cpp-multithreading
 articles/learning-js
