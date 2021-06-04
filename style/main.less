@@ -20,7 +20,7 @@ a,h1,h2,h3 {
 h1,h2,h3 {
   margin-top: 10px;
   margin-bottom: 10px;
-  color: @main_dark;
+ 
 }
 
 /* BIG TEXT for h1 */
@@ -39,11 +39,29 @@ a {
   }
 }
 
+article{
+  color: @main_dark;
+}
+
+.light-text main article {
+  color: @main_light;
+  background: #00000020;
+  border: solid 1px #00000060;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 40px;
+  transform: translateX(-10px);
+
+  a {
+    color: @accent_light
+  }
+}
+
+
 p,li {
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   line-height: 22pt;
   font-size: 12pt;
-  color: @main_medium;
 }
 
 /* links in the navigation should be black */
@@ -99,10 +117,15 @@ img {
   border-radius: 3px;
 }
 
-
-
 //fix for .fa-discord misalignment
 .fa-discord {
   transform: translateY(6.3%);
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
