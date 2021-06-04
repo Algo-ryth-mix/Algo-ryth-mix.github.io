@@ -12,10 +12,11 @@ renderer.setSize(window.innerWidth,window.innerHeight);
 camera.position.setZ(45);
 
 const star_material = new THREE.MeshBasicMaterial({color:0xFFFFFF});
+const green_material = new THREE.MeshBasicMaterial({color:0x6ead3a})
 
 function make_star() {
     const geometry = new THREE.SphereGeometry(0.25,24,24);
-    const star = new THREE.Mesh(geometry,star_material);
+    const star = new THREE.Mesh(geometry,Math.random() < 0.9 ? star_material : green_material);
     const [x,y,z] = Array(3).fill().map(() => Math.random() * 200 - 100)
 
     star.position.set(x,y,z);
