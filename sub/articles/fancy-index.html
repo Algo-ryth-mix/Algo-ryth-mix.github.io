@@ -1,0 +1,84 @@
+<!-- Blog -->
+<!--Title Fancy Index Page Title-->
+
+<article>
+    <h1>Making a Fancy Index Page</h1>
+    <h3>GL in the browser!</h3>
+
+ 
+    <p> You might have noticed that the <a href="/">front page</a> recently got a facelift.
+        These little 3d Balls you see are directly rendered in the browser (yes your browser!),
+        using a technology called <a href="https://www.khronos.org/webgl/">WebGL.</a>
+
+        I'm using a library called "Three.js" to interface with WebGL in a slightly
+        more abstracted fashion. You can think of it like a framework similiar to sdl or maybe
+        even processing. 
+
+        While I still am not the biggest fan of JS, I do think that what you can do with the 
+        modern browser is quite incredible, and it is hard to argue with the absoulte abundance
+        of well maintiained libraries.
+
+    </p>
+    <!-- Jumplink -->
+    <p>
+        Lets walk through the code for the page.
+
+        <pre class="loadjs language-js" id="js/ex_landingpage1.js"></pre>
+    </p>
+    <p>
+        This is the initialization part of the page, while this is quite short it sets the most
+        important variables for the rest of the page. The scene is a kind of container for all the
+        object that we are going to draw. The camera dictates how we are going to observe the scene.
+        In this case it is a PerspectiveCamera, which uses "perspective"-Projection. In case you are
+        confused what different projection types mean and how they look like 
+        <a href="https://en.wikipedia.org/wiki/Perspective_(graphical)">here</a> is a good article on
+        wikipedia. Finally the renderer does all the hard work. it requires a DOM element, more 
+        specifically a canvas element, and uses WebGL to render the scene to it.
+    </p>
+
+    <p>
+        Now lets go through the code for the stars.
+        <pre class="loadjs language-js" id="js/ex_landingpage2.js"></pre>
+    </p>
+    <p>
+        This code generates the little blobs you can see rotating in the scene,
+        officially I call them "stars" but really they are just little spheres 
+        Based on random luck they get one of 2 colors, white or the green that
+        is used as the accent color on this website. Additionally they get a 
+        random position in the range from -100 to 100. I add them to a "stars" 
+        container which means that later on I only need to rotate one object
+        which significantly increases performance. Finally the container itself
+        is added to the scene.
+    </p>
+
+    <p>
+        All that is left now is to rotate the spheres.
+        <pre class="loadjs language-js" id="js/ex_landingpage3.js"></pre>
+    </p>
+    <p>
+        This code snippet is sort of like the "main-loop" of the script.
+        the function "animate" is called in constant intervals, thus allowing me to
+        increase the rotation of the stars, without stuttering. It also calls the
+        render function to refresh the canvas.
+
+        because the window might resize, the camera may need to be updated every once in
+        a while. the onWindowResize function does exactly this. It updates the projection
+        of the camera and in addition sets the size that the renderer can draw to.
+    </p>
+    <p>
+        You can see that this code is not actually particularly complicated, but a lot of 
+        stuff had to happen in other parts of the website for this to work as well.
+        Parts of the amalgamte script had to make way for THREE.js to be included. 
+        And both the mobile and desktop css had to be adjusted to make the canvas not 
+        only visible but also make the nav still work. At some point I might replace 
+        big parts of the webpage with blazor, because my simple client side renderer 
+        is slowly but surely getting overwhelmed by the complexity of the page. And 
+        frankly is becoming a nightmare to maintain.
+    </p>
+
+
+    <p>
+        As always this code can be found on my github: <a href="https://github.com/Algo-ryth-mix/Algo-ryth-mix.github.io"> here</a>
+    </p>
+
+</article>

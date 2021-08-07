@@ -9,21 +9,27 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth,window.innerHeight);
 
+//set camera position and background color
 camera.position.setZ(45);
+scene.background = new THREE.Color(0x1E2C39)
 
+//setup materials
 const star_material = new THREE.MeshBasicMaterial({color:0xFFFFFF});
 const green_material = new THREE.MeshBasicMaterial({color:0x6ead3a})
 
 function make_star() {
     const geometry = new THREE.SphereGeometry(0.25,24,24);
-    const star = new THREE.Mesh(geometry,Math.random() < 0.9 ? star_material : green_material);
-    const [x,y,z] = Array(3).fill().map(() => Math.random() * 200 - 100)
 
+    //choose a random color
+    const star = new THREE.Mesh(geometry,Math.random() < 0.9 ? star_material : green_material);
+    
+    //create random positions
+    const [x,y,z] = Array(3).fill().map(() => Math.random() * 200 - 100)
     star.position.set(x,y,z);
+
     return star
 }
 
-scene.background = new THREE.Color(0x1E2C39)
 
 stars = new THREE.Group()
 

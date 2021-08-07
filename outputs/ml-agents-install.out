@@ -1,0 +1,11 @@
+$python --version # make sure you have either python3.6 or python3.7, if not install them from python.org
+                  # alternatively if you are doing this on linux use apt, yum, pacman, etc..
+$python -mvenv venv # if you are on linux you might also need to install python3-pip and python3-venv
+$./venv/Scripts/activate # or ./venv/bin/activate if you are on linux
+
+# install pytorch, you might need to install a c++ compiler for the dependencies
+# also note that if you want to use cuda, you need the cuda sdk from nvidia
+# and might need to rename one cudart_10/11.dll to cudart_8.dll
+(venv)$ pip install torch~=1.7.1 -f https://download.pytorch.org/whl/torch_stable.html
+(venv)$ pip install mlagents==0.27.0
+

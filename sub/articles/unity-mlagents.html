@@ -1,0 +1,62 @@
+<!-- Blog -->
+<!--Title Unity & ML-Agents Title-->
+<article>
+    <h1>Unity & ML-Agents</h1>
+    <h3>Not quite a Hal9000</h3>
+
+    <p>Recently I did a project for uni that required a lot of machine-learning in conjunction
+        with Unity. While we ultimatley decided against using the built in Barracuda module,
+        I still wanted to explore it a little bit. Unity Barracuda alone is a little hard to 
+        work with, luckily Unity also made ML-Agents. It neatly wraps around the Barracuda API
+        and abstracts a lot of the frankly weird quirks of Barracuda away.
+
+        Not so luckily it is not particularly trivial to install:
+    <!-- Jumplink -->
+
+        <pre class="loadbash language-bash" id="outputs/ml-agents-install.out"></pre>
+
+    </p>
+    <p>
+        As you can see, there have been easier things to install, but when working with
+        machine-learning nothing appears to be easy to install anyways. Note that you might
+        also want to install TensorBoard, which is a really useful tool for visualising how
+        your model is performing.
+    </p>
+    <h3>Scene</h3>
+    <p> Next you want to prepare a Scene and a way for your agent to see and walk
+        (or fly, solve a task or whatever).
+        mine looks a little like this:
+        <img src="media/ml-agents-scene.png" alt="Unity ML-Agents Scene" width="600">
+    </p>
+
+    <p>
+        As you can see, there are multiple environments all a little differently spaced,
+        but they all have the same structure. One agent (in blue), a goal (in green) and 
+        walls (in red). The reason there are multiple arenas is so that you can train much
+        faster. This effectivly multithreads the training. For brevity I won't show the scripts
+        here, but you can find them as always on github.
+    </p>
+    <p> all that is left now is to start ml-agents, you should see your little agents jittering,
+        around almost as if they had a siezure. but slowly but surely they should learn to do more
+        precisve movements towards the goal.
+        <pre class="loadbash language-bash" id="outputs/ml-agents-run.out"></pre>
+
+    </p>
+    <p>
+        You can also check your progress with TensorBoard. Just make sure they look like this
+    </p>
+        <img src="media/goodest.png" alt="TensorBoard" width="600">
+    <p>
+        And not like this
+    </p>
+        <img src="media/bad.png" alt="TensorBoard" width="600">
+
+    <p>
+        Sadly as you can see below my model never got to a point where it was <i>really</i> good, but it did get better
+        at quickly finding the reward. 
+    </p>
+        <img src="media/jittery-agent.gif" alt="Agent"/>
+    <p>
+        As always you can find all the code on github! <a href="https://github.com/Algo-ryth-mix/ML-Agents-Hide-And-Seek"> here </a>
+    </p>
+</article>
